@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function validatefunction()
+        {
+            var x = document.forms["mf"]["my_name"].value;
+           if ( x=="")
+           {
+            alert("Complete the format by typing the name")
+           }
+           else
+           {
+            return false
+            
+           }
+           document.write = "Name sumitated succesfully thank you for submating the formate";
+        }
+    </script>
+</head>
+<body>
+    <h2>Validation</h2>
+
+    <form name="mf" onsubmit="validatefunction()">
+        <label>Name</label>
+        <input type="text" name="my_name">
+        <input type="submit" value="Submit">
+        <p id="message"></p>
+    </form>
+</body>
+</html>
