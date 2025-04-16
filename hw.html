@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            padding: 8px;
+            width: 300px;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Login Form</h1>
+    <form id="loginForm">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+            <p id="nameError" class="error"></p>
+        </div>
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" id="age" required>
+            <p id="ageError" class="error"></p>
+        </div>
+        <button type="submit">Login</button>
+    </form>
+    <script>
+        const form = document.getElementById('loginForm');
+        const nameInput = document.getElementById('name');
+        const ageInput = document.getElementById('age');
+        const nameError = document.getElementById('nameError');
+        const ageError = document.getElementById('ageError');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault(); // Prevent form submission
+
+            let isValid = true;
+
+            // Validate name
+            if (!nameInput.value.trim()) {
+                nameError.textContent = 'Name is required.';
+                isValid = false;
+            } else {
+                nameError.textContent = '';
+            }
+
+            // Validate age
+            const age = parseInt(ageInput.value, 10);
+            if (isNaN(age) || age < 18) {
+                ageError.textContent = 'You must be 18 or older.';
+                isValid = false;
+            } else {
+                ageError.textContent = '';
+            }
+
+            // Proceed if valid
+            if (isValid) {
+                alert(`Welcome, ${nameInput.value}! You are ${age} years old.`);
+            }
+        });
+    </script>
+</body>
+
+</html>
